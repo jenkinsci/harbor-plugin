@@ -1,0 +1,20 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form" xmlns:c="/lib/credentials">
+    <f:entry title="${%Name}" field="name">
+        <f:textbox/>
+    </f:entry>
+    <f:entry title="${%Base URL}" field="baseUrl">
+        <f:textbox/>
+    </f:entry>
+    <f:entry title="${%Webhook Secret}" field="webhookSecretId">
+        <c:select/>
+    </f:entry>
+    <f:advanced>
+        <f:entry title="${%Disable Https Certificate Check}" field="skipTlsVerify">
+            <f:checkbox default="false"/>
+        </f:entry>
+        <f:entry title="${%Debug Logging}" field="debugLogging">
+            <f:checkbox default="false"/>
+        </f:entry>
+    </f:advanced>
+</j:jelly>

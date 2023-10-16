@@ -33,6 +33,7 @@ pipeline {
                     docker.withRegistry("https://${harborRegistryUrl}", harborCredentialId) {
                         docker.image("${harborRegistryUrl}/${repositoryName}:${BUILD_NUMBER}").push()
                     }
+                    waitForHarborWebHook server: 'Harbor Example', credentialsId: 'harbor_credentials', severity: 'Medium', abortPipeline: true
                     sh "docker rmi ${harborRegistryUrl}/${repositoryName}:${BUILD_NUMBER}"
                 }
             }

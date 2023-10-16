@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM nginx:1.14
 
 WORKDIR /app
 

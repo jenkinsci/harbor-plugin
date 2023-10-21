@@ -13,11 +13,6 @@ pipeline {
         repositoryName = 'beijing/alpine-test'
     }
     stages {
-        stage('CHECKOUT') {
-            steps {
-                checkout scm
-            }
-        }
         stage('DOCKER_BUILD') {
             steps {
                 dir("src/test/pipeline") {

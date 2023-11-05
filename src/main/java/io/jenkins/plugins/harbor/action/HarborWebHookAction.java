@@ -53,6 +53,7 @@ public class HarborWebHookAction extends CrumbExclusion implements UnprotectedRo
      * @see <a href="https://wiki.jenkins-ci.org/display/JENKINS/Web+Method">Web+Method</a>
      */
     @RequirePOST
+    @SuppressWarnings("lgtm[jenkins/no-permission-check]")
     public void doIndex(StaplerRequest req, StaplerResponse rsp) throws IOException {
         String payload = IOUtils.toString(req.getReader());
 

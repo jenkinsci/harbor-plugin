@@ -93,6 +93,10 @@ public class HarborServer extends AbstractDescribableImpl<HarborServer> implemen
          */
         @SuppressWarnings({"unused", "lgtm[jenkins/csrf]"})
         public static FormValidation doCheckBaseUrl(@QueryParameter String value) {
+            if (!Jenkins.get().hasPermission(Jenkins.ADMINISTER)) {
+                return FormValidation.error("You do not have sufficient permissions.");
+            }
+
             try {
                 new URL(value);
             } catch (MalformedURLException e) {

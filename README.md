@@ -23,7 +23,7 @@ The Harbor Plugin enables integration between Jenkins and Harbor services. It pr
 
 2. Go to the global configuration and add Harbor Server Config.
 
-![docs/images/img.png](docs/images/add-harbor-server.png)
+![add-harbor-server.png](docs/images/add-harbor-server.png)
 
 > Webhook secret has not been implemented yet, please ignore the configuration.
 
@@ -32,6 +32,10 @@ The Harbor Plugin enables integration between Jenkins and Harbor services. It pr
 ```groovy
 waitForHarborWebHook abortPipeline: true, credentialsId: 'harbor_credentials', server: 'Harbor Example', severity: 'Critical'
 ```
+
+4. Execute the pipeline and wait for Harbor scan results. Based on the scan results, dynamically determine the status of the pipeline execution. If any security risks are detected during the scan, the pipeline will be marked as failed or interrupted. Conversely, if the image passes the security scan, the pipeline will continue its execution without interruptions.
+
+![harbor-scan-completed.png](docs/images/harbor-scan-completed.png)
 
 ## Acknowledgments
 

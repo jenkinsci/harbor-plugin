@@ -91,6 +91,7 @@ public class HarborServer extends AbstractDescribableImpl<HarborServer> implemen
          * @param value the URL to check.
          * @return the validation results.
          */
+        @SuppressWarnings({"unused", "lgtm[jenkins/csrf]"})
         public static FormValidation doCheckBaseUrl(@QueryParameter String value) {
             try {
                 new URL(value);
@@ -100,7 +101,7 @@ public class HarborServer extends AbstractDescribableImpl<HarborServer> implemen
             return FormValidation.ok();
         }
 
-        @SuppressWarnings("unused")
+        @SuppressWarnings({"unused", "lgtm[jenkins/csrf]"})
         public ListBoxModel doFillWebhookSecretIdItems(@QueryParameter String webhookSecretId) {
             if (!Jenkins.get().hasPermission(Jenkins.ADMINISTER)) {
                 return new StandardListBoxModel().includeCurrentValue(webhookSecretId);

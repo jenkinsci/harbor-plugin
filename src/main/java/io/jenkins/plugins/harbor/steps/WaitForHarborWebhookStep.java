@@ -113,6 +113,7 @@ public class WaitForHarborWebhookStep extends Step implements Serializable {
             return ImmutableSet.of(FilePath.class, TaskListener.class, Run.class, Launcher.class, EnvVars.class);
         }
 
+        @SuppressWarnings({"unused", "lgtm[jenkins/csrf]"})
         public ListBoxModel doFillServerItems() {
             StandardListBoxModel result = new StandardListBoxModel();
             for (HarborServer harborServer :
@@ -122,6 +123,7 @@ public class WaitForHarborWebhookStep extends Step implements Serializable {
             return result;
         }
 
+        @SuppressWarnings({"unused", "lgtm[jenkins/csrf]"})
         public ListBoxModel doFillCredentialsIdItems(@AncestorInPath Item item) {
             if (item == null || !item.hasPermission(Item.CONFIGURE)) {
                 return new ListBoxModel();
@@ -136,6 +138,7 @@ public class WaitForHarborWebhookStep extends Step implements Serializable {
             return model;
         }
 
+        @SuppressWarnings({"unused", "lgtm[jenkins/csrf]"})
         public ListBoxModel doFillSeverityItems() {
             ListBoxModel items = new ListBoxModel();
             Severity[] severities = Severity.values();

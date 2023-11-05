@@ -61,6 +61,7 @@ public class HarborClientImpl implements HarborClient {
         return httpClient;
     }
 
+    @SuppressWarnings("lgtm[jenkins/unsafe-calls]")
     private OkHttpClient.Builder skipTlsVerify(OkHttpClient.Builder httpClient, boolean isSkipTlsVerify)
             throws NoSuchAlgorithmException, KeyManagementException {
         if (isSkipTlsVerify) {

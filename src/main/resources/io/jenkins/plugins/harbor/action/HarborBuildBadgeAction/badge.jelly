@@ -1,0 +1,6 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core">
+    <a href="${it.urlName}" target="_blank" rel="noopener noreferrer">
+        <img width="16" height="16" title="See ${it.displayName} Vulnerabilities" src="${rootURL}${it.iconFileName}"/>
+    </a>
+</j:jelly>

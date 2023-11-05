@@ -8,17 +8,16 @@ import hudson.model.Descriptor;
 import hudson.security.ACL;
 import hudson.util.FormValidation;
 import hudson.util.ListBoxModel;
-import jenkins.model.Jenkins;
-import org.jenkinsci.plugins.plaincredentials.StringCredentials;
-import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.DataBoundSetter;
-import org.kohsuke.stapler.QueryParameter;
-
 import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.logging.Logger;
+import jenkins.model.Jenkins;
+import org.jenkinsci.plugins.plaincredentials.StringCredentials;
+import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.stapler.DataBoundSetter;
+import org.kohsuke.stapler.QueryParameter;
 
 public class HarborServer extends AbstractDescribableImpl<HarborServer> implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -30,7 +29,8 @@ public class HarborServer extends AbstractDescribableImpl<HarborServer> implemen
     private boolean debugLogging = false;
 
     @DataBoundConstructor
-    public HarborServer(String name, String baseUrl, String webhookSecretId, boolean skipTlsVerify, boolean debugLogging) {
+    public HarborServer(
+            String name, String baseUrl, String webhookSecretId, boolean skipTlsVerify, boolean debugLogging) {
         this.name = name;
         this.baseUrl = baseUrl;
         this.webhookSecretId = webhookSecretId;
@@ -113,8 +113,7 @@ public class HarborServer extends AbstractDescribableImpl<HarborServer> implemen
                             Jenkins.get(),
                             StringCredentials.class,
                             Collections.emptyList(),
-                            CredentialsMatchers.always()
-                    );
+                            CredentialsMatchers.always());
         }
 
         @Override

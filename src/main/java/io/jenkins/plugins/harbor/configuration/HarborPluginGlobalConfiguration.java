@@ -2,14 +2,13 @@ package io.jenkins.plugins.harbor.configuration;
 
 import hudson.Extension;
 import io.jenkins.plugins.harbor.HarborException;
+import java.io.Serializable;
+import java.util.List;
+import java.util.logging.Logger;
 import jenkins.model.GlobalConfiguration;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.StaplerRequest;
-
-import java.io.Serializable;
-import java.util.List;
-import java.util.logging.Logger;
 
 @Extension
 public class HarborPluginGlobalConfiguration extends GlobalConfiguration implements Serializable {

@@ -1,0 +1,14 @@
+<div xmlns="http://www.w3.org/1999/html">
+    <p><pre>
+node("node1") {
+    sh """
+        docker build -t harbor.example.com/beijing/hello-world:latest .
+        docker push harbor.example.com/beijing/hello-world:latest
+    """
+    waitForHarborWebHook server: 'Harbor',
+    	credentialsId: "harbor-robot-account",
+    	fullImageName: "harbor.example.com/beijing/hello-world:latest",
+    	abortPipeline: true
+}
+    </pre>
+</div>

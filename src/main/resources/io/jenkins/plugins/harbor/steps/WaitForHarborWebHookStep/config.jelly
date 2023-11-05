@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form" xmlns:c="/lib/credentials">
+    <f:entry title="${%Choose Harbor Server}" field="server">
+        <f:select/>
+    </f:entry>
+    <f:entry title="${%Harbor connection credentials}" field="credentialsId">
+        <c:select/>
+    </f:entry>
+<!--    <f:entry title="${%Full Image Name}" field="fullImageName">-->
+<!--        <f:textbox/>-->
+<!--    </f:entry>-->
+    <f:entry title="Choose Severity" field="severity">
+        <f:select />
+    </f:entry>
+    <f:advanced>
+        <f:entry title="${%Abort Pipeline}" field="abortPipeline">
+            <f:checkbox default="true"/>
+        </f:entry>
+    </f:advanced>
+</j:jelly>

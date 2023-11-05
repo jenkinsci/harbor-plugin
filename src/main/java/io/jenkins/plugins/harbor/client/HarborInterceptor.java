@@ -9,6 +9,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class HarborInterceptor implements Interceptor {
+    @SuppressWarnings("lgtm[jenkins/plaintext-storage]")
     private final String credential;
 
     public HarborInterceptor(String username, String password) {

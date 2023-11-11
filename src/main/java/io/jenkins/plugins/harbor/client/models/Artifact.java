@@ -39,8 +39,10 @@ public class Artifact {
     private HashMap<String, AdditionLink> additionLinks;
 
     private String labels;
+
     @SuppressWarnings("lgtm[jenkins/plaintext-storage]")
     private String accessories;
+
     private HashMap<String, NativeReportSummary> scanOverview;
 
     public String getMediaType() {

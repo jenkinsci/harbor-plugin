@@ -23,11 +23,6 @@ import io.jenkins.plugins.harbor.client.models.Severity;
 import io.jenkins.plugins.harbor.configuration.HarborPluginGlobalConfiguration;
 import io.jenkins.plugins.harbor.configuration.HarborServer;
 import io.jenkins.plugins.harbor.util.HarborConstants;
-import org.jenkinsci.plugins.workflow.graph.FlowNode;
-import org.jenkinsci.plugins.workflow.steps.StepContext;
-import org.jenkinsci.plugins.workflow.steps.StepExecution;
-import org.jenkinsci.plugins.workflow.support.actions.PauseAction;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -39,6 +34,10 @@ import java.util.function.Consumer;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.jenkinsci.plugins.workflow.graph.FlowNode;
+import org.jenkinsci.plugins.workflow.steps.StepContext;
+import org.jenkinsci.plugins.workflow.steps.StepExecution;
+import org.jenkinsci.plugins.workflow.support.actions.PauseAction;
 
 public class WaitForHarborWebhookExecution extends StepExecution implements Consumer<HarborWebhookEvent> {
     private static final long serialVersionUID = 1L;

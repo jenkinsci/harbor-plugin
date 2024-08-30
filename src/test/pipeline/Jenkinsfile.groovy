@@ -8,7 +8,7 @@ def getBuildDate() {
 pipeline {
     agent any
     environment {
-        harborRegistryUrl = 'harbor.example.com'
+        harborRegistryUrl = 'core.harbor.domain'
         harborCredentialId = 'harbor_credentials'
         repositoryName = 'beijing/alpine-test'
     }

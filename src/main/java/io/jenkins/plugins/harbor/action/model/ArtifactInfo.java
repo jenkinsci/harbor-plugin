@@ -1,5 +1,6 @@
 package io.jenkins.plugins.harbor.action.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -7,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  * @see <a href="https://github.com/goharbor/harbor/blob/main/src/controller/event/model/event.go#L23">ArtifactInfo</a>
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ArtifactInfo {
     private String type;
     private String status;

@@ -1,4 +1,5 @@
 <?jelly escape-by-default='true'?>
 <div>
-    This plugin integrates Jenkins with <a href="https://goharbor.io/">Harbor</a>
+    This plugin integrates Jenkins with
+    <a href="https://goharbor.io/">Harbor</a>
 </div>

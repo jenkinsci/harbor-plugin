@@ -1,10 +1,13 @@
 package io.jenkins.plugins.harbor.action.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Selector to narrow down the list
  *
  * @see <a href="https://github.com/goharbor/harbor/blob/main/src/pkg/immutable/model/rule.go">Selector</a>
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Selector {
     private String kind;
     private String decoration;

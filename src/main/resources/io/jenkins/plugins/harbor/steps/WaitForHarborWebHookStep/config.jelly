@@ -7,11 +7,11 @@
     <f:entry title="${%Harbor connection credentials}" field="credentialsId">
         <c:select/>
     </f:entry>
-<!--    <f:entry title="${%Full Image Name}" field="fullImageName">-->
-<!--        <f:textbox/>-->
-<!--    </f:entry>-->
+    <!--    <f:entry title="${%Full Image Name}" field="fullImageName">-->
+    <!--        <f:textbox/>-->
+    <!--    </f:entry>-->
     <f:entry title="Choose Severity" field="severity">
-        <f:select />
+        <f:select/>
     </f:entry>
     <f:advanced>
         <f:entry title="${%Abort Pipeline}" field="abortPipeline">

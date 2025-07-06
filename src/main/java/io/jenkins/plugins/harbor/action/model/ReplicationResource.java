@@ -1,5 +1,6 @@
 package io.jenkins.plugins.harbor.action.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -7,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  * @see <a href="https://github.com/goharbor/harbor/blob/main/src/controller/event/model/event.go">ReplicationResource</a>
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ReplicationResource {
     @JsonProperty("registry_name")
     private String registryName;

@@ -1,6 +1,7 @@
 package io.jenkins.plugins.harbor.action.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.jenkins.plugins.harbor.client.models.NativeReportSummary;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.HashMap;
  *
  * @see <a href="https://github.com/goharbor/harbor/blob/main/src/pkg/notifier/model/event.go">Resource</a>
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @SuppressFBWarnings("EI_EXPOSE_REP")
 public class Resource {
     private String digest;

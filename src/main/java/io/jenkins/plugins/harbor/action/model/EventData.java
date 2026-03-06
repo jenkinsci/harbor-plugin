@@ -1,6 +1,7 @@
 package io.jenkins.plugins.harbor.action.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.HashMap;
 
@@ -12,6 +13,7 @@ import java.util.HashMap;
 @SuppressFBWarnings(
         value = {"EI_EXPOSE_REP", "EI_EXPOSE_REP2"},
         justification = "I prefer to suppress these FindBugs warnings")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class EventData {
     private Resource[] resources;
     private Repository repository;

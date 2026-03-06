@@ -20,6 +20,8 @@ import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import okhttp3.*;
 import okhttp3.logging.HttpLoggingInterceptor;
 
@@ -128,10 +130,12 @@ public class HarborClientImpl implements HarborClient {
     public Artifact[] listArtifacts(
             String projectName, String repositoryName, @Nullable Map<String, String> extraParams)
             throws HarborException, IOException {
+        // repository name must be encoded twice as per Harbor API v2 specifications
+        String encodedRepositoryName = URLEncoder.encode(repositoryName, StandardCharsets.UTF_8);
         HttpUrl apiUrl = addQueryParameter(
                 UriTemplate.fromTemplate(baseUrl + API_LIST_ARTIFACTS_PATH)
                         .set("project_name", projectName)
-                        .set("repository_name", repositoryName),
+                        .set("repository_name", encodedRepositoryName),
                 extraParams);
         return JsonParser.toJava(httpGet(apiUrl), Artifact[].class);
     }
@@ -140,10 +144,12 @@ public class HarborClientImpl implements HarborClient {
     public Artifact getArtifact(
             String projectName, String repositoryName, String reference, @Nullable Map<String, String> extraParams)
             throws IOException {
+        // repository name must be encoded twice as per Harbor API v2 specifications
+        String encodedRepositoryName = URLEncoder.encode(repositoryName, StandardCharsets.UTF_8);
         HttpUrl apiUrl = addQueryParameter(
                 UriTemplate.fromTemplate(baseUrl + API_GET_ARTIFACT_PATH)
                         .set("project_name", projectName)
-                        .set("repository_name", repositoryName)
+                        .set("repository_name", encodedRepositoryName)
                         .set("reference", reference),
                 extraParams);
         return JsonParser.toJava(httpGet(apiUrl), Artifact.class);

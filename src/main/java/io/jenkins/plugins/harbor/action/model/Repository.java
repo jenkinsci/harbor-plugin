@@ -1,12 +1,14 @@
 package io.jenkins.plugins.harbor.action.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Repository info of notification event
  *
  * @see <a href="https://github.com/goharbor/harbor/blob/main/src/pkg/notifier/model/event.go">Repository</a>
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Repository {
     @JsonProperty("date_created")
     private long dateCreated;

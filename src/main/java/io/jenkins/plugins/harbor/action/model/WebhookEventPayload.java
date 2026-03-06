@@ -1,12 +1,14 @@
 package io.jenkins.plugins.harbor.action.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Payload of notification event
  *
  * @see <a href="https://github.com/goharbor/harbor/blob/main/src/pkg/notifier/model/event.go">WebhookEventPayload</a>
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WebhookEventPayload {
     private EventType type;
 

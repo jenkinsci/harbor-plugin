@@ -45,6 +45,7 @@ public class WaitForHarborWebhookExecution extends StepExecution implements Cons
     private static final int MAX_LOG_LINES = 1000;
     private static final String BUILD_IMAGE_NAME_PATTERN = "#\\d+ naming to (\\S+/\\S+/\\S+:\\S+) .*done";
     private static final String BUILD_IMAGE_DIGEST_PATTERN = "(\\d+): digest: (sha256:[a-f0-9]+) size: (\\d+)";
+    private static final String BUILDX_IMAGE_DIGEST_PATTERN = "#\\d+: writing image (sha256:[a-f0-9]+) .*done";
     private final WaitForHarborWebhookStep waitForHarborWebhookStep;
     private Image image;
 
@@ -79,10 +80,12 @@ public class WaitForHarborWebhookExecution extends StepExecution implements Cons
             List<String> lastConsoleLogLines = getContextClass(Run.class).getLog(MAX_LOG_LINES);
             Pattern namePattern = Pattern.compile(BUILD_IMAGE_NAME_PATTERN);
             Pattern digestPattern = Pattern.compile(BUILD_IMAGE_DIGEST_PATTERN);
+            Pattern buildxDigestPattern = Pattern.compile(BUILDX_IMAGE_DIGEST_PATTERN);
 
             for (String line : lastConsoleLogLines) {
                 Matcher nameMatcher = namePattern.matcher(line);
                 Matcher digestMatcher = digestPattern.matcher(line);
+                Matcher buildxDigestMatcher = buildxDigestPattern.matcher(line);
 
                 if (nameMatcher.find()) {
                     foundImageName = nameMatcher.group(1);
@@ -91,8 +94,13 @@ public class WaitForHarborWebhookExecution extends StepExecution implements Cons
                 if (digestMatcher.find()) {
                     foundImageDigest = digestMatcher.group(2);
                 }
+
+                if (buildxDigestMatcher.find()) {
+                    foundImageDigest = buildxDigestMatcher.group(1);
+                }
             }
-        } else {
+        }
+        if(foundImageName != null && foundImageDigest == null) {
             foundImageDigest = getDigestByFullImageName(foundImageName);
         }
 

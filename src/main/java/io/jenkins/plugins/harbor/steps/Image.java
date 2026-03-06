@@ -5,8 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Image implements Serializable {
-    public static final String IMAGE_FORMAT_PATTERN = "([^/]+)/([^/]+)/([^/]+):([^/]+)";
-    public static final String IMAGE_DIGEST_FORMAT_PATTERN = "([^/]+)/([^/]+)/([^/]+)@([^/]+)";
+    public static final String IMAGE_FORMAT_PATTERN = "([^/]+)/([^/]+)/(.+):([^/]+)";
+    public static final String IMAGE_DIGEST_FORMAT_PATTERN = "([^/]+)/([^/]+)/(.+)@([^/]+)";
     private final String imageName;
     private final String imageDigest;
     private String registry;

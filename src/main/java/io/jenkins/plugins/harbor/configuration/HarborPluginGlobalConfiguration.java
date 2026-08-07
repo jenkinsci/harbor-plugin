@@ -4,10 +4,10 @@ import hudson.Extension;
 import io.jenkins.plugins.harbor.HarborException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Logger;
 import jenkins.model.GlobalConfiguration;
 import net.sf.json.JSONObject;
-import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.StaplerRequest;
 
 @Extension
@@ -26,7 +26,7 @@ public class HarborPluginGlobalConfiguration extends GlobalConfiguration impleme
 
     public static HarborServer getHarborServerByName(String name) {
         return get().getServers().stream()
-                .filter(harborServer -> StringUtils.equals(name, harborServer.getName()))
+                .filter(harborServer -> Objects.equals(name, harborServer.getName()))
                 .findFirst()
                 .orElseThrow(() -> new HarborException("The Harbor Server Name Is Invalid"));
     }
